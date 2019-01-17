@@ -7,6 +7,7 @@ phases:
       - curl -sS -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/kubectl
       - chmod +x ./kubectl ./aws-iam-authenticator
       - export PATH=$PWD/:$PATH
+      - echo "PWD=$PWD, PATH=$PATH"
       - echo "install phase"
       - apt-get update && apt-get -y install jq python3-pip python3-dev && pip3 install --upgrade awscli
   pre_build:
@@ -38,6 +39,9 @@ phases:
       - echo TEST_CHECKPOINT_3
       - cat /root/.kube/config
       - echo "Post build phase"
+      - echo TEST_CHECKPOINT_4
+      - echo "PWD=$PWD, PATH=$PATH"
+      - echo TEST_CHECKPOINT_5
       - kubectl version
       - kubectl get svc
       - kubectl apply -f hello-k8s.yml
