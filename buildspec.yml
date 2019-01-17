@@ -34,9 +34,8 @@ phases:
       - echo TEST_CHECKPOINT_1
       - aws sts get-caller-identity
       - echo TEST_CHECKPOINT_2
-      - cat /root/.kube/config
-      - echo TEST_CHECKPOINT_3
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
+      - echo TEST_CHECKPOINT_3
       - cat /root/.kube/config
       - echo "Post build phase"
       - kubectl version
